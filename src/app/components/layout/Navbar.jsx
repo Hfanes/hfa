@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import ExpansionFill from "@/components/ui/ExpansionFill";
 
 const navItems = [
   { label: "Home", href: "#home", color: "bg-deepBlue" },
@@ -14,8 +15,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  //custom cursor
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
   const [isOverNavbar, setIsOverNavbar] = useState(false);
   const [expansionStates, setExpansionStates] = useState({});
   const [cascadeStates, setCascadeStates] = useState({});
@@ -24,10 +24,10 @@ export default function Navbar() {
   const elementRefs = useRef([]);
   const navbarRef = useRef(null);
 
-  // Check if mobile
+  // Check if tablet
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth <= 1024);
     };
 
     checkMobile();
@@ -53,16 +53,6 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [navbarExpanded]);
-
-  // Track global mouse position for custom cursor
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    document.addEventListener("mousemove", handleMouseMove);
-    return () => document.removeEventListener("mousemove", handleMouseMove);
-  }, []);
 
   // Mouse position relative to a nav item (for animation origin).
   const getRelativePosition = useCallback((element, clientX, clientY) => {
@@ -233,7 +223,7 @@ export default function Navbar() {
         {/* Mobile Menu Button */}
         <button
           onClick={toggleMobileMenu}
-          className="fixed top-8 right-8 z-50 bg-black text-white p-3 shadow-lg transition-all duration-300"
+          className="fixed top-8 right-8 z-50 bg-black text-white p-3 transition-all duration-300"
         >
           {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -257,7 +247,6 @@ export default function Navbar() {
                         ${isExpanding ? "h-12 px-6" : "h-12"}
                         ${isCollapsing ? "h-12" : ""}
                         ${item.color}
-                        shadow-lg
                         transform ${isExpanding ? "scale-100" : "scale-0"}
                         ${isCollapsing ? "scale-0" : ""}
                       `}
@@ -293,104 +282,79 @@ export default function Navbar() {
 
   //DESKTOP
   return (
-    <>
-      {/* Custom cursor */}
-      <div
-        className="fixed pointer-events-none z-[100] transition-all duration-200 ease-out"
-        style={{
-          left: mousePosition.x - 6,
-          top: mousePosition.y - 6,
-          transform: `scale(${isOverNavbar ? 0.5 : 1})`,
-          opacity: isOverNavbar ? 0.3 : 1,
-        }}
-      >
-        <div className="w-3 h-3 bg-black shadow-lg" />
-      </div>
+    <nav
+      ref={navbarRef}
+      className="fixed top-8 right-8 z-50 transition-all duration-500 ease-out"
+      onMouseEnter={handleNavbarMouseEnter}
+      onMouseLeave={handleNavbarMouseLeave}
+    >
+      <ul className="flex flex-col space-y-3 items-end">
+        {navItems.map((item, index) => {
+          const expansionState = expansionStates[index];
+          const isActive = expansionState?.isActive || false;
+          const scale = expansionState?.scale || 0;
+          const isContracting = expansionState?.isContracting || false;
 
-      <nav
-        ref={navbarRef}
-        className="fixed top-8 right-8 z-50 transition-all duration-500 ease-out"
-        onMouseEnter={handleNavbarMouseEnter}
-        onMouseLeave={handleNavbarMouseLeave}
-      >
-        <ul className="flex flex-col space-y-3 items-end">
-          {navItems.map((item, index) => {
-            const expansionState = expansionStates[index];
-            const isActive = expansionState?.isActive || false;
-            const scale = expansionState?.scale || 0;
-            const isContracting = expansionState?.isContracting || false;
+          const currentOriginX = isContracting
+            ? expansionState?.exitX ?? expansionState?.originX ?? 0.5
+            : expansionState?.originX ?? 0.5;
+          const currentOriginY = isContracting
+            ? expansionState?.exitY ?? expansionState?.originY ?? 0.5
+            : expansionState?.originY ?? 0.5;
 
-            const currentOriginX = isContracting
-              ? expansionState?.exitX ?? expansionState?.originX ?? 0.5
-              : expansionState?.originX ?? 0.5;
-            const currentOriginY = isContracting
-              ? expansionState?.exitY ?? expansionState?.originY ?? 0.5
-              : expansionState?.originY ?? 0.5;
+          // Determine if this element should be expanded or collapsed
+          const shouldBeExpanded =
+            (isScrolled && navbarExpanded) ||
+            (!isScrolled && !navbarCollapsedAtTop);
 
-            // Determine if this element should be expanded or collapsed
-            const shouldBeExpanded =
-              (isScrolled && navbarExpanded) ||
-              (!isScrolled && !navbarCollapsedAtTop);
-
-            return (
-              <li key={item.label} className="relative self-end">
-                <a
-                  ref={(el) => (elementRefs.current[index] = el)}
-                  href={item.href}
-                  className={`
+          return (
+            <li key={item.label} className="relative self-end">
+              <a
+                ref={(el) => (elementRefs.current[index] = el)}
+                href={item.href}
+                className={`
                     relative flex items-center justify-center overflow-hidden
                     transition-all duration-500 ease-out cursor-none 
                     ${shouldBeExpanded ? "h-12 px-6" : "h-12"}
                     ${item.color}
-                    shadow-lg hover:shadow-xl
                     transform hover:scale-110 
                   `}
-                  style={{
-                    width: shouldBeExpanded
-                      ? `${Math.max(item.label.length * 10 + 16, 80)}px`
-                      : "42px",
-                    height: "42px",
-                  }}
-                  onMouseEnter={(e) => handleMouseEnter(index, e)}
-                  onMouseLeave={(e) => handleMouseLeave(index, e)}
-                >
-                  {/* Black expansion fill */}
-                  <div
-                    className="absolute inset-0 bg-black transition-all duration-100 ease-out"
-                    style={{
-                      opacity: isActive ? 1 : 0,
-                      transform: `scale(${scale})`,
-                      transformOrigin: `${currentOriginX * 100}% ${
-                        currentOriginY * 100
-                      }%`,
-                      clipPath: `circle(${Math.max(
-                        scale * 120,
-                        scale * Math.sqrt(2) * 100
-                      )}% at ${currentOriginX * 100}% ${
-                        currentOriginY * 100
-                      }%)`,
-                    }}
-                  />
+                style={{
+                  width: shouldBeExpanded
+                    ? `${Math.max(item.label.length * 10 + 16, 80)}px`
+                    : "42px",
+                  height: "42px",
+                }}
+                onMouseEnter={(e) => handleMouseEnter(index, e)}
+                onMouseLeave={(e) => handleMouseLeave(index, e)}
+              >
+                {/* Black expansion fill */}
+                <ExpansionFill
+                  isActive={isActive}
+                  scale={scale}
+                  originX={currentOriginX}
+                  originY={currentOriginY}
+                  fillColor="bg-black"
+                />
 
-                  {/* Only show icon and text when expanded */}
-                  {shouldBeExpanded && (
-                    <>
-                      <span
-                        className={`
+                {/* Only show icon and text when expanded */}
+                {shouldBeExpanded && (
+                  <>
+                    <span
+                      className={`
                           text-white font-bold text-lg whitespace-nowrap relative z-10
                           transition-all duration-500 opacity-100 translate-x-0
                         `}
-                      >
-                        {item.label}
-                      </span>
-                    </>
-                  )}
-                </a>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
-    </>
+                    >
+                      {item.label}
+                    </span>
+                  </>
+                )}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
   );
 }
