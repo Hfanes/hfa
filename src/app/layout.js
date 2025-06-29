@@ -1,10 +1,12 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist_Mono, JetBrains_Mono, VT323 } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/layout/Navbar";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
+  weight: "700", // your desired weights
+  variable: "--font-jetbrains", // optional for Tailwind or CSS var
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
@@ -12,7 +14,15 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const vt323 = VT323({
+  variable: "--font-vt323",
+  subsets: ["latin"],
+  weight: "400",
+});
+
 export const metadata = {
+  //TODO: Change metadataBase URL
+  // metadataBase: new URL(""),
   title: "hfa | Full-Stack Developer Portfolio",
   description:
     "Full-stack web developer specializing in modern JavaScript and Java frameworks, backend APIs, and responsive design.",
@@ -53,11 +63,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="en" className="dark">
+      <body className={`${jetbrainsMono.variable} ${vt323.variable} `}>
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );
