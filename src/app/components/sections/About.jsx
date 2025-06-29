@@ -41,16 +41,16 @@ export default function About() {
           <span className="text-brightPurple">/ </span>
           about me
         </h3>
-        <div className="flex flex-col mt-4 gap-8 w-full ">
+        <div className="flex flex-col mt-4 gap-8 w-full">
           <div className="flex">
             <div className="space-y-4 text-lg">
-              <p className="mr-10">
+              <p className="mr-10 w-full">
                 I'm a full-stack developer from Portugal, currently based in
                 Switzerland and actively seeking full-time opportunities. I
                 enjoy working across the stack and love building functional,
                 user-friendly applications that solve real problems.
               </p>
-              <p className="mr-10">
+              <p className="mr-10 w-full">
                 I hold a Master's degree in Computer Science from the University
                 of Trás-os-Montes e Alto Douro. While I'm still exploring which
                 area to specialize in long term, I'm passionate about continuous
@@ -65,7 +65,10 @@ export default function About() {
               />
             </div>
           </div>
-          <div className="text-lg mt-8 text-center">Tech Stack:</div>
+          <div className="text-lg mt-8 text-start">
+            <span className="text-brightPurple">/ </span>
+            Tech Stack:
+          </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 text-center font-semibold ">
             {techItems.map((item, index) => (
               <div key={index} className="flex flex-col items-center gap-1">

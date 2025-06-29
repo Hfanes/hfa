@@ -35,7 +35,7 @@ const projects = [
   },
   {
     title: "Tasks App",
-    desc: "Tasks App is a full-stack personal project designed to create a tasks and tasks lists.",
+    desc: "Tasks App is a full-stack personal project designed to create taks lists and tasks.",
     href: "https://github.com/Hfanes/java-tasks",
     logo: "",
     preview: "",
@@ -55,7 +55,7 @@ const projects = [
     ],
   },
   {
-    title: "Discord bot cherry",
+    title: "Discord Bot Cherry",
     desc: "Discord Bot Cherry is a personal project designed to fetch cryptocurrency prices from an API.",
     href: "https://github.com/Hfanes/discord-bot-cherry",
     logo: "",

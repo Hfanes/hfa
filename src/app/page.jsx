@@ -1,6 +1,7 @@
 import About from "@/components/sections/About";
 import Navbar from "@/components/layout/Navbar";
 import NavForTailwind from "@/components/layout/NavForTailwind";
+import LeftNavbar from "@/components/layout/LeftNavbar";
 import Projects from "@/components/sections/Projects";
 import Footer from "@/components/sections/Footer";
 import CustomCursor from "@/components/ui/CustomCursor ";
@@ -11,11 +12,12 @@ export default function Home() {
   return (
     <div
       className="max-w-6xl mx-auto c-space
-    text-zinc-900 transition-colors bg-white dark:bg-zinc-900 dark:text-zinc-100"
+     transition-colors "
     >
       <CustomCursor />
       <main className="flex flex-col gap-8 items-center sm:items-start">
         <Navbar />
+        <LeftNavbar />
         <NavForTailwind />
         <Hero />
         <About />

@@ -13,9 +13,10 @@ export default function Hero() {
 
     return () => clearInterval(interval);
   }, [helloItems.length]);
+
   return (
-    <section className="c-space min-h-screen w-full flex flex-col items-center">
-      <div className="mt-10 sm:mt-20 flex flex-col items-center gap-y-20 w-full">
+    <section className="c-space min-h-screen w-full flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center gap-y-10 w-full">
         <img
           src="/images/yellow_hfa.png"
           alt="hfa logo"
@@ -29,12 +30,12 @@ export default function Hero() {
                   "mr-8 sm:mr-9 md:mr-11 lg:mr-16"
                 : //Olá
                 currentIndex === 2
-                ? "mr-10 sm:mr-13 md:mr-16 lg:mr-22"
+                ? "mr-12 sm:mr-13 md:mr-16 lg:mr-22"
                 : //Bonjour
                 currentIndex === 4
-                ? "mr-24 sm:mr-30 md:mr-35 lg:mr-50"
+                ? "mr-26 sm:mr-30 md:mr-35 lg:mr-50"
                 : //Hallo, Hola, Ciao
-                  "mr-14 sm:mr-19 md:mr-23 lg:mr-32"
+                  "mr-18 sm:mr-19 md:mr-23 lg:mr-32"
             }
               `}
           >
@@ -53,7 +54,7 @@ export default function Hero() {
           </span>
           <span>I'm Hugo</span>
         </h1>
-        <p className="text-lg sm:text-xl md:text-2xl text-center text-zinc-200 max-w-2xl">
+        <p className="text-lg sm:text-xl md:text-2xl text-center max-w-2xl">
           Full-Stack Developer passionate about creating products and bringing
           ideas to life through code.
         </p>
