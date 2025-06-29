@@ -34,7 +34,10 @@ export default function ThemeToggle() {
   };
 
   return (
-    <button onClick={toggleTheme}>
+    <button
+      onClick={toggleTheme}
+      className="cursor-pointer transition-all duration-300 hover:scale-110"
+    >
       {isDark ? (
         // Sun icon for dark mode
         <IoIosSunny size={24} />
