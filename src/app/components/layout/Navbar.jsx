@@ -6,6 +6,7 @@ import ExpansionFill from "@/components/ui/ExpansionFill";
 import { MdKeyboardArrowUp } from "react-icons/md";
 import { motion, AnimatePresence } from "framer-motion";
 import LeftNavbar from "./LeftNavbar";
+import { useTheme } from "@/contexts/ThemeProvider";
 
 const navItems = [
   { label: "Home", href: "#home", color: "bg-deepBlue" },
@@ -27,6 +28,8 @@ export default function Navbar() {
   const [navbarCollapsedAtTop, setNavbarCollapsedAtTop] = useState(false);
   const elementRefs = useRef([]);
   const navbarRef = useRef(null);
+
+  const { isDark } = useTheme();
 
   const scrollToTopFunction = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -263,7 +266,9 @@ export default function Navbar() {
                   animate={{ rotate: 0, opacity: 1, scale: 1 }}
                   exit={{ rotate: 90, opacity: 0, scale: 0.5 }}
                   transition={{ duration: 0.4, ease: "easeInOut" }}
-                  className="flex items-center justify-center"
+                  className={`flex items-center justify-center ${
+                    isDark ? "text-white" : "text-black"
+                  }`}
                 >
                   <X size={26} />
                 </motion.div>
@@ -274,7 +279,9 @@ export default function Navbar() {
                   animate={{ rotate: 0, opacity: 1, scale: 1 }}
                   exit={{ rotate: -90, opacity: 0, scale: 0.5 }}
                   transition={{ duration: 0.4, ease: "easeInOut" }}
-                  className="flex items-center justify-center"
+                  className={`flex items-center justify-center ${
+                    isDark ? "text-white" : "text-black"
+                  }`}
                 >
                   <Menu size={26} />
                 </motion.div>

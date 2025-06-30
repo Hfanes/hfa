@@ -1,6 +1,7 @@
 import { Geist_Mono, JetBrains_Mono, VT323 } from "next/font/google";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import ThemeProvider from "./contexts/ThemeProvider";
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -27,7 +28,7 @@ export const metadata = {
   description:
     "Full-stack web developer specializing in modern JavaScript and Java frameworks, backend APIs, and responsive design.",
   icons: {
-    icon: "/yellow_hfa.ico",
+    icon: "/images/yellow_hfa.ico",
   },
   openGraph: {
     title: "hfa | Full-Stack Developer Portfolio",
@@ -65,7 +66,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="dark">
       <body className={`${jetbrainsMono.variable} ${vt323.variable} `}>
-        {children}
+        <ThemeProvider>{children}</ThemeProvider>
         <SpeedInsights />
       </body>
     </html>

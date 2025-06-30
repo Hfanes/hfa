@@ -1,6 +1,5 @@
 import About from "@/components/sections/About";
 import Navbar from "@/components/layout/Navbar";
-import NavForTailwind from "@/components/layout/NavForTailwind";
 import LeftNavbar from "@/components/layout/LeftNavbar";
 import Projects from "@/components/sections/Projects";
 import Footer from "@/components/sections/Footer";
@@ -18,7 +17,6 @@ export default function Home() {
       <main className="flex flex-col gap-8 items-center sm:items-start">
         <Navbar />
         <LeftNavbar />
-        <NavForTailwind />
         <Hero />
         <About />
         <Projects />

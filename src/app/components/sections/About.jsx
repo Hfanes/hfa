@@ -41,42 +41,40 @@ export default function About() {
           <span className="text-brightPurple">/ </span>
           about me
         </h3>
-        <div className="flex flex-col mt-4 gap-8 w-full">
-          <div className="flex">
-            <div className="space-y-4 text-lg">
-              <p className="mr-10 w-full">
-                I'm a full-stack developer from Portugal, currently based in
-                Switzerland and actively seeking full-time opportunities. I
-                enjoy working across the stack and love building functional,
-                user-friendly applications that solve real problems.
-              </p>
-              <p className="mr-10 w-full">
-                I hold a Master's degree in Computer Science from the University
-                of Trás-os-Montes e Alto Douro. While I'm still exploring which
-                area to specialize in long term, I'm passionate about continuous
-                learning and thrive in collaborative environments.
-              </p>
+        <div className="flex flex-col md:flex-row items-center md:items-start gap-8 mt-4 w-full">
+          <div className="flex-1 space-y-4 text-lg">
+            <p>
+              I'm a full-stack developer from Portugal, currently based in
+              Switzerland and actively seeking full-time opportunities. I enjoy
+              working across the stack and love building functional,
+              user-friendly applications that solve real problems.
+            </p>
+            <p>
+              I hold a Master's degree in Computer Science from the University
+              of Trás-os-Montes e Alto Douro. While I'm still exploring which
+              area to specialize in long term, I'm passionate about continuous
+              learning and thrive in collaborative environments.
+            </p>
+          </div>
+          <div className="hidden md:flex flex-shrink-0 mb-6 md:mb-0 md:mr-8 justify-center w-full md:w-auto">
+            <img
+              src="/images/me.JPEG"
+              alt="Portrait"
+              className="w-32 h-32 md:w-40 md:h-40 object-cover rounded-lg"
+            />
+          </div>
+        </div>
+        <div className="text-lg mt-8 text-start">
+          <span className="text-brightPurple">/ </span>
+          Tech Stack:
+        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 text-center font-semibold ">
+          {techItems.map((item, index) => (
+            <div key={index} className="flex flex-col items-center gap-1">
+              <div>{item.label}</div>
+              <div>{item.icon}</div>
             </div>
-            <div className="hidden md:block aspect-square w-40">
-              <img
-                src="/images/me.jpeg"
-                alt="Portrait"
-                className="w-full h-full object-cover rounded-xl"
-              />
-            </div>
-          </div>
-          <div className="text-lg mt-8 text-start">
-            <span className="text-brightPurple">/ </span>
-            Tech Stack:
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 text-center font-semibold ">
-            {techItems.map((item, index) => (
-              <div key={index} className="flex flex-col items-center gap-1">
-                <div>{item.label}</div>
-                <div>{item.icon}</div>
-              </div>
-            ))}
-          </div>
+          ))}
         </div>
       </div>
     </section>
