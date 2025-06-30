@@ -25,8 +25,7 @@ const vt323 = VT323({
 });
 
 export const metadata = {
-  //TODO: Change metadataBase URL
-  // metadataBase: new URL(""),
+  metadataBase: new URL("hfanes.com"),
   title: "hfa | Full-Stack Developer Portfolio",
   description:
     "Full-stack web developer specializing in modern JavaScript and Java frameworks, backend APIs, and responsive design.",
@@ -38,15 +37,13 @@ export const metadata = {
     description:
       "Explore my projects, skills, and contact info as a full-stack developer.",
     icons: {
-      icon: "/yellow_hfa.ico",
+      icon: "/images/yellow_hfa.ico",
     },
-    //TODO: Change url
-    url: "",
+    url: "hfanes.com",
     siteName: "hfa Portfolio",
     images: [
       {
-        //Todo: Change image
-        url: "/og-image.jpg",
+        url: "/images/hfa_open.png",
         width: 1200,
         height: 630,
         alt: "hfa Portfolio Preview",
@@ -56,12 +53,9 @@ export const metadata = {
     type: "website",
   },
   twitter: {
-    //Todo: Change image
-    card: "summary_large_image",
     title: "hfa | Full-Stack Developer Portfolio",
     description: "Explore my full-stack projects, skills, and experience.",
-    //Todo: Change image
-    images: ["/og-image.jpg"],
+    images: "/images/hfa_open.png",
   },
 };
 
