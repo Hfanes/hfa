@@ -28,7 +28,7 @@ body {
 
 @layer utilities {
   .c-space {
-    @apply sm:px-12 px-6;
+    @apply sm:px-16 px-6;
   }
   .animate-margin {
     transition: margin-right 2s ease; /* Change 0.5s to your desired speed */

@@ -31,12 +31,13 @@ export default function ProjectsPage() {
         </h1>
         <div className="relative mb-2 flex items-center w-full">
           <HiOutlineSearch
-            className="absolute left-3 text-zinc-400 pointer-events-none"
+            className="absolute left-3 pointer-events-non"
             size={18}
           />
           <input
             type="text"
-            className="border w-full p-2 pl-10 bg-zinc-800 text-zinc-200 placeholder:text-zinc-400 focus:outline-none focus:ring-1 focus:ring-accentYellow transition-colors"
+            className="border w-full p-2 pl-10
+             focus:outline-none focus:ring-1 focus:ring-accentYellow transition-colors"
             placeholder="Search projects..."
             onChange={(e) => setQuery(e.target.value)}
           />

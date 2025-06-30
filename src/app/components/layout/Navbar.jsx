@@ -7,6 +7,7 @@ import { MdKeyboardArrowUp } from "react-icons/md";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useTheme } from "@/contexts/ThemeProvider";
 
 const navItems = [
   { label: "Home", href: "/", color: "bg-deepBlue" },
@@ -20,7 +21,6 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   const [isOverNavbar, setIsOverNavbar] = useState(false);
   const [expansionStates, setExpansionStates] = useState({});
   const [cascadeStates, setCascadeStates] = useState({});
@@ -29,21 +29,7 @@ export default function Navbar() {
   const [navbarCollapsedAtTop, setNavbarCollapsedAtTop] = useState(false);
   const elementRefs = useRef([]);
   const navbarRef = useRef(null);
-
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    // Check if user has a saved preference
-    const savedTheme = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
-
-    if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
-      setIsDark(true);
-      document.documentElement.classList.add("dark");
-    }
-  }, []);
+  const { isDark } = useTheme();
 
   const scrollToTopFunction = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
