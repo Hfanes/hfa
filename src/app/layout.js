@@ -5,6 +5,7 @@ import ThemeProvider from "./contexts/ThemeProvider";
 import Navbar from "@/components/layout/Navbar";
 import LeftNavbar from "@/components/layout/LeftNavbar";
 import Footer from "@/components/sections/Footer";
+import { Analytics } from "@vercel/analytics/next";
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -25,7 +26,7 @@ const vt323 = VT323({
 });
 
 export const metadata = {
-  metadataBase: new URL("hfanes.com"),
+  metadataBase: new URL("https://www.hfanes.com/"),
   title: "hfa | Full-Stack Developer Portfolio",
   description:
     "Full-stack web developer specializing in modern JavaScript and Java frameworks, backend APIs, and responsive design.",
@@ -39,7 +40,7 @@ export const metadata = {
     icons: {
       icon: "/images/yellow_hfa.ico",
     },
-    url: "hfanes.com",
+    url: "https://www.hfanes.com/",
     siteName: "hfa Portfolio",
     images: [
       {
@@ -53,6 +54,7 @@ export const metadata = {
     type: "website",
   },
   twitter: {
+    card: "summary_large_image",
     title: "hfa | Full-Stack Developer Portfolio",
     description: "Explore my full-stack projects, skills, and experience.",
     images: "/images/hfa_open.png",
@@ -69,6 +71,7 @@ export default function RootLayout({ children }) {
           {children}
           <Footer />
         </ThemeProvider>
+        <Analytics />
         <SpeedInsights />
       </body>
     </html>
