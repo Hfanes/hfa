@@ -2,7 +2,6 @@ import About from "@/components/sections/About";
 import Navbar from "@/components/layout/Navbar";
 import LeftNavbar from "@/components/layout/LeftNavbar";
 import Projects from "@/components/sections/Projects";
-import Footer from "@/components/sections/Footer";
 import CustomCursor from "@/components/ui/CustomCursor ";
 import Hero from "@/components/sections/Hero";
 import Contact from "@/components/sections/Contact";
@@ -11,7 +10,7 @@ export default function Home() {
   return (
     <div
       className="max-w-6xl mx-auto c-space
-     transition-colors "
+     transition-colors"
     >
       <CustomCursor />
       <main className="flex flex-col gap-8 items-center sm:items-start">
@@ -21,7 +20,6 @@ export default function Home() {
         <About />
         <Projects />
         <Contact />
-        <Footer />
       </main>
     </div>
   );

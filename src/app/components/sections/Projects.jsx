@@ -1,81 +1,10 @@
 "use client";
 import React from "react";
-import { FaReact, FaPython, FaDiscord, FaGithub } from "react-icons/fa";
-import { SiPostgresql, SiDotnet, SiJsonwebtokens } from "react-icons/si";
-import { BiLogoSpringBoot } from "react-icons/bi";
+import { FaGithub } from "react-icons/fa";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import { HiOutlineArrowTrendingUp } from "react-icons/hi2";
-import { RiNextjsFill } from "react-icons/ri";
-
-const projects = [
-  {
-    title: "Blog App",
-    desc: "Blog App is a personal project designed to create a blog platform where users can write, edit, and delete their posts. It features user authentication, post management, and a clean user interface.",
-    href: "https://github.com/Hfanes/java-blog",
-    logo: "",
-    preview: "",
-    tech: [
-      {
-        name: "Spring Boot",
-        icon: <BiLogoSpringBoot />,
-      },
-      {
-        name: "Next.js",
-        icon: <RiNextjsFill />,
-      },
-      {
-        name: "PostgreSQL",
-        icon: <SiPostgresql />,
-      },
-      {
-        name: "JWT",
-        icon: <SiJsonwebtokens />,
-      },
-    ],
-  },
-  {
-    title: "Tasks App",
-    desc: "Tasks App is a full-stack personal project designed to create taks lists and tasks.",
-    href: "https://github.com/Hfanes/java-tasks",
-    logo: "",
-    preview: "",
-    tech: [
-      {
-        name: "Spring Boot",
-        icon: <BiLogoSpringBoot />,
-      },
-      {
-        name: "Next.js",
-        icon: <RiNextjsFill />,
-      },
-      {
-        name: "PostgreSQL",
-        icon: <SiPostgresql />,
-      },
-    ],
-  },
-  {
-    title: "Discord Bot Cherry",
-    desc: "Discord Bot Cherry is a personal project designed to fetch cryptocurrency prices from an API.",
-    href: "https://github.com/Hfanes/discord-bot-cherry",
-    logo: "",
-    preview: "",
-    tech: [
-      {
-        name: "Python",
-        icon: <FaPython />,
-      },
-      {
-        name: "Discord",
-        icon: <FaDiscord />,
-      },
-      {
-        name: "PostgreSQL",
-        icon: <SiPostgresql />,
-      },
-    ],
-  },
-];
+import Link from "next/link";
+import { myProjects } from "@/constants/index";
 
 export default function Projects() {
   return (
@@ -90,15 +19,18 @@ export default function Projects() {
             <span className="text-accentYellow">/ </span>
             projects
           </h3>
-          <a className="group flex items-center gap-1 hover:text-white transition-colors cursor-pointer default-cursor hover:underline underline-offset-4 hover:font-bold">
+          <Link
+            href="/projects"
+            className="group flex items-center gap-1 hover:text-white transition-colors cursor-pointer default-cursor hover:underline underline-offset-4 hover:font-bold"
+          >
             <span className="group-hover:scale-102">More</span>
             <span className="transform transition-transform duration-200 group-hover:translate-x-0.5">
               <HiOutlineArrowNarrowRight />
             </span>
-          </a>
+          </Link>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {projects.map((project, index) => (
+          {myProjects.map((project, index) => (
             <div
               key={index}
               className="relative flex flex-col justify-between border gap-4 p-5 min-h-[200px] bg-deepBlue text-accentYellow "

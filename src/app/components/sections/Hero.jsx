@@ -15,7 +15,10 @@ export default function Hero() {
   }, [helloItems.length]);
 
   return (
-    <section className="c-space min-h-screen w-full flex flex-col items-center justify-center">
+    <section
+      id="/"
+      className="c-space min-h-screen w-full flex flex-col items-center justify-center"
+    >
       <div className="flex flex-col items-center gap-y-10 w-full">
         <img
           src="/images/yellow_hfa.png"
