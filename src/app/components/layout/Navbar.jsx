@@ -5,17 +5,18 @@ import { Menu, X } from "lucide-react";
 import ExpansionFill from "@/components/ui/ExpansionFill";
 import { MdKeyboardArrowUp } from "react-icons/md";
 import { motion, AnimatePresence } from "framer-motion";
-import LeftNavbar from "./LeftNavbar";
-import { useTheme } from "@/contexts/ThemeProvider";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const navItems = [
-  { label: "Home", href: "#home", color: "bg-deepBlue" },
-  { label: "About", href: "#about", color: "bg-deepPurple" },
-  { label: "Projects", href: "#projects", color: "bg-accentYellow" },
-  { label: "Contact", href: "#contact", color: "bg-brightPurple" },
+  { label: "Home", href: "/", color: "bg-deepBlue" },
+  { label: "About", href: "/#about", color: "bg-deepPurple" },
+  { label: "Projects", href: "/#projects", color: "bg-accentYellow" },
+  { label: "Contact", href: "/#contact", color: "bg-brightPurple" },
 ];
 
 export default function Navbar() {
+  const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -29,7 +30,20 @@ export default function Navbar() {
   const elementRefs = useRef([]);
   const navbarRef = useRef(null);
 
-  const { isDark } = useTheme();
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    // Check if user has a saved preference
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+
+    if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+      setIsDark(true);
+      document.documentElement.classList.add("dark");
+    }
+  }, []);
 
   const scrollToTopFunction = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -300,8 +314,25 @@ export default function Navbar() {
 
                   return (
                     <li key={index} className="relative self-end">
-                      <a
+                      <Link
                         href={item.href}
+                        scroll={false}
+                        onClick={(e) => {
+                          if (item.href.startsWith("/#")) {
+                            e.preventDefault();
+                            const elementId = item.href.substring(2);
+                            if (router.pathname !== "/") {
+                              return;
+                            }
+                            const element = document.getElementById(elementId);
+                            if (element) {
+                              element.scrollIntoView({
+                                behavior: "smooth",
+                                block: "start",
+                              });
+                            }
+                          }
+                        }}
                         className={`
                           relative flex items-center justify-center overflow-hidden
                           transition-all duration-500 ease-out cursor-none
@@ -331,7 +362,7 @@ export default function Navbar() {
                         >
                           {item.label}
                         </span>
-                      </a>
+                      </Link>
                     </li>
                   );
                 })}
@@ -368,9 +399,23 @@ export default function Navbar() {
 
               return (
                 <li key={item.label} className="relative self-end">
-                  <a
+                  <Link
+                    scroll={false}
                     ref={(el) => (elementRefs.current[index] = el)}
                     href={item.href}
+                    onClick={(e) => {
+                      if (item.href.startsWith("/#")) {
+                        e.preventDefault();
+                        const elementId = item.href.substring(2);
+                        const element = document.getElementById(elementId);
+                        if (element) {
+                          element.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start",
+                          });
+                        }
+                      }
+                    }}
                     className={`
                         relative flex items-center justify-center overflow-hidden
                         transition-all duration-500 ease-out cursor-none 
@@ -409,7 +454,7 @@ export default function Navbar() {
                         </span>
                       </>
                     )}
-                  </a>
+                  </Link>
                 </li>
               );
             })}

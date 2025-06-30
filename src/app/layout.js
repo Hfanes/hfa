@@ -2,6 +2,9 @@ import { Geist_Mono, JetBrains_Mono, VT323 } from "next/font/google";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import ThemeProvider from "./contexts/ThemeProvider";
+import Navbar from "@/components/layout/Navbar";
+import LeftNavbar from "@/components/layout/LeftNavbar";
+import Footer from "@/components/sections/Footer";
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -66,7 +69,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="dark">
       <body className={`${jetbrainsMono.variable} ${vt323.variable} `}>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <Navbar />
+          <LeftNavbar />
+          {children}
+          <Footer />
+        </ThemeProvider>
         <SpeedInsights />
       </body>
     </html>

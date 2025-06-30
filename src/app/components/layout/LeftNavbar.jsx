@@ -8,8 +8,8 @@ import ThemeToggle from "../ui/ThemeToggle";
 
 export default function LeftNavbar() {
   return (
-    <nav className="fixed top-8 left-8 p-3">
-      <div className="flex items-center justify-center gap-4 default-cursor">
+    <nav className="fixed top-8 left-8 p-3 z-100">
+      <div className="flex sm:flex-col items-center justify-center gap-4 default-cursor">
         <ThemeToggle />
         <a
           className="cursor-pointer transition-all duration-300 hover:scale-110"
