@@ -14,6 +14,7 @@ export default function Footer() {
           href="https://github.com/Hfanes"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Visit my github profile"
         >
           <FaGithub size={24} />
         </a>
@@ -22,6 +23,7 @@ export default function Footer() {
           href="https://www.linkedin.com/in/hugofanes/"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Visit my linkedin profile"
         >
           <FaLinkedin size={24} />
         </a>
@@ -30,6 +32,7 @@ export default function Footer() {
           href=""
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Visit my twitter profile"
         >
           <FaXTwitter size={24} />
         </a>
@@ -37,6 +40,7 @@ export default function Footer() {
           className="cursor-pointer "
           href="mailto:anesfh@gmail.com"
           rel="noopener noreferrer"
+          aria-label="Send me an email"
         >
           <IoMdMail size={24} />
         </a>

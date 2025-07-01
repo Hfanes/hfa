@@ -10,6 +10,7 @@ export default function ThemeToggle() {
 
   return (
     <button
+      aria-label="Toggle Theme"
       onClick={toggleTheme}
       className="cursor-pointer transition-all duration-300 hover:scale-110"
     >

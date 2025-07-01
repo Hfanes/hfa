@@ -16,6 +16,7 @@ export default function LeftNavbar() {
           href="https://github.com/Hfanes"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Visit my GitHub profile"
         >
           <FaGithub size={24} />
         </a>
@@ -24,6 +25,7 @@ export default function LeftNavbar() {
           href="https://www.linkedin.com/in/hugofanes/"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Visit my Linkedin profile"
         >
           <FaLinkedin size={24} />
         </a>
@@ -32,6 +34,7 @@ export default function LeftNavbar() {
           href=""
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Visit my twitter profile"
         >
           <FaXTwitter size={24} />
         </a>
@@ -39,6 +42,7 @@ export default function LeftNavbar() {
           className="cursor-pointer transition-all duration-300 hover:scale-110"
           href="mailto:anesfh@gmail.com"
           rel="noopener noreferrer"
+          aria-label="Send me an email"
         >
           <IoMdMail size={24} />
         </a>

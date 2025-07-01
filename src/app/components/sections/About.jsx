@@ -37,10 +37,10 @@ export default function About() {
       data-cursor-color="bg-deepPurple"
     >
       <div className="flex flex-col gap-4 text-start ">
-        <h3 className="font-bold text-xl sm:text-2xl">
+        <h2 className="font-bold text-xl sm:text-2xl">
           <span className="text-brightPurple">/ </span>
           about me
-        </h3>
+        </h2>
         <div className="flex flex-col md:flex-row items-center md:items-start gap-8 mt-4 w-full">
           <div className="flex-1 space-y-4 text-lg">
             <p>
@@ -58,16 +58,16 @@ export default function About() {
           </div>
           <div className="hidden md:flex flex-shrink-0 mb-6 md:mb-0 md:mr-8 justify-center w-full md:w-auto">
             <img
-              src="/images/me.JPEG"
+              src="/images/me.webp"
               alt="Portrait"
               className="w-32 h-32 md:w-40 md:h-40 object-cover rounded-lg"
             />
           </div>
         </div>
-        <div className="text-lg mt-8 text-start">
+        <h3 className="text-lg mt-8 text-start">
           <span className="text-brightPurple">/ </span>
           Tech Stack:
-        </div>
+        </h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 text-center font-semibold ">
           {techItems.map((item, index) => (
             <div key={index} className="flex flex-col items-center gap-1">

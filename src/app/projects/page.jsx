@@ -25,10 +25,10 @@ export default function ProjectsPage() {
      transition-colors"
     >
       <div className="c-space mt-30 sm:mt-20 w-full flex flex-col gap-4 justify-center">
-        <h1>
+        <h3>
           <span className="text-brightPurple">/ </span>
           my projects
-        </h1>
+        </h3>
         <div className="relative mb-2 flex items-center w-full">
           <HiOutlineSearch
             className="absolute left-3 pointer-events-non"
@@ -70,6 +70,7 @@ export default function ProjectsPage() {
               href={project.href}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Visit this project in github"
             >
               <FaGithub size={24} />
             </a>
@@ -80,6 +81,7 @@ export default function ProjectsPage() {
                 href={project.href}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Visit this project in github"
               >
                 <span className="group-hover:scale-102 transition-transform">
                   {project.title}
