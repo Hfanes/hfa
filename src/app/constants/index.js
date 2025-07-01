@@ -1,10 +1,7 @@
-import { FaReact, FaPython, FaDiscord, FaGithub } from "react-icons/fa";
-import { SiPostgresql, SiDotnet, SiJsonwebtokens } from "react-icons/si";
+import { FaPython, FaDiscord } from "react-icons/fa";
+import { SiPostgresql, SiJsonwebtokens } from "react-icons/si";
 import { BiLogoSpringBoot } from "react-icons/bi";
-import { HiOutlineArrowNarrowRight } from "react-icons/hi";
-import { HiOutlineArrowTrendingUp } from "react-icons/hi2";
 import { RiNextjsFill } from "react-icons/ri";
-import Link from "next/link";
 
 export const myProjects = [
   {
