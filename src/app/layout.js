@@ -9,20 +9,14 @@ import { Analytics } from "@vercel/analytics/next";
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  weight: "700", // your desired weights
-  variable: "--font-jetbrains", // optional for Tailwind or CSS var
-  display: "swap",
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: "700",
+  variable: "--font-jetbrains",
 });
 
 const vt323 = VT323({
-  variable: "--font-vt323",
   subsets: ["latin"],
   weight: "400",
+  variable: "--font-vt323",
 });
 
 export const metadata = {
@@ -44,7 +38,7 @@ export const metadata = {
     siteName: "hfa Portfolio",
     images: [
       {
-        url: "/images/hfa_open.png",
+        url: "https://www.hfanes.com/images/hfa_open.webp",
         width: 1200,
         height: 630,
         alt: "hfa Portfolio Preview",
@@ -57,7 +51,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "hfa | Full-Stack Developer Portfolio",
     description: "Explore my full-stack projects, skills, and experience.",
-    images: "/images/hfa_open.png",
+    images: "https://www.hfanes.com/images/hfa_open.webp",
   },
 };
 
