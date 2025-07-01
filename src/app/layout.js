@@ -31,14 +31,11 @@ export const metadata = {
     title: "hfa | Full-Stack Developer Portfolio",
     description:
       "Explore my projects, skills, and contact info as a full-stack developer.",
-    icons: {
-      icon: "/images/yellow_hfa.ico",
-    },
     url: "https://www.hfanes.com/",
     siteName: "hfa Portfolio",
     images: [
       {
-        url: "https://www.hfanes.com/images/hfa_open.webp",
+        url: "/images/hfa_open.png",
         width: 1200,
         height: 630,
         alt: "hfa Portfolio Preview",
@@ -51,7 +48,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "hfa | Full-Stack Developer Portfolio",
     description: "Explore my full-stack projects, skills, and experience.",
-    images: "https://www.hfanes.com/images/hfa_open.webp",
+    images: ["/images/hfa_open.png"],
   },
 };
 
