@@ -241,6 +241,7 @@ export default function Navbar() {
       {/* Scroll to top button - always rendered but conditionally visible */}
       {scrollToTop && (
         <button
+          aria-label="Scroll to top"
           className="fixed bottom-6 right-6 p-3 rounded-full z-50 bg-accentYellow text-black transition-opacity duration-300 opacity-100"
           onClick={scrollToTopFunction}
         >
@@ -248,40 +249,35 @@ export default function Navbar() {
         </button>
       )}
 
-      {/* Main navbar content */}
+      {/* Mobile */}
       {isMobile ? (
-        <div className="flex justify-center items-center">
+        <div>
           {/* Mobile Menu Button */}
           <motion.button
+            aria-label="Toggle mobile"
             onClick={toggleMobileMenu}
-            className="fixed top-8 right-8 z-50 text-black p-3 transition-all duration-300"
-            whileTap={{ scale: 0.9 }}
-            whileHover={{ scale: 1.1 }}
+            className="fixed top-8 right-8 z-50 p-3 bg-black transition-all duration-300"
           >
-            <AnimatePresence mode="wait">
+            <AnimatePresence exitBeforeEnter mode="wait" initial={false}>
               {mobileMenuOpen ? (
                 <motion.div
-                  key="sun"
+                  key="close"
                   initial={{ rotate: -90, opacity: 0, scale: 0.5 }}
                   animate={{ rotate: 0, opacity: 1, scale: 1 }}
                   exit={{ rotate: 90, opacity: 0, scale: 0.5 }}
                   transition={{ duration: 0.4, ease: "easeInOut" }}
-                  className={`flex items-center justify-center ${
-                    isDark ? "text-white" : "text-black"
-                  }`}
+                  className="text-white"
                 >
                   <X size={26} />
                 </motion.div>
               ) : (
                 <motion.div
-                  key="moon"
+                  key="open"
                   initial={{ rotate: 90, opacity: 0, scale: 0.5 }}
                   animate={{ rotate: 0, opacity: 1, scale: 1 }}
                   exit={{ rotate: -90, opacity: 0, scale: 0.5 }}
                   transition={{ duration: 0.4, ease: "easeInOut" }}
-                  className={`flex items-center justify-center ${
-                    isDark ? "text-white" : "text-black"
-                  }`}
+                  className="text-white"
                 >
                   <Menu size={26} />
                 </motion.div>
