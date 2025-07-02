@@ -22,6 +22,15 @@ const vt323 = VT323({
 export const metadata = {
   metadataBase: new URL("https://www.hfanes.com/"),
   title: "hfa | Full-Stack Developer Portfolio",
+  category: "technology",
+  creator: "@hfa_dev",
+  keywords: [
+    "hfa",
+    "hfanes",
+    "full-stack developer",
+    "portfolio",
+    "web development",
+  ],
   description:
     "Full-stack web developer specializing in modern JavaScript and Java frameworks, backend APIs, and responsive design.",
   icons: {
@@ -31,7 +40,7 @@ export const metadata = {
     title: "hfa | Full-Stack Developer Portfolio",
     description:
       "Explore my projects, skills, and contact info as a full-stack developer.",
-    url: "https://www.hfanes.com/",
+    url: "https://www.hfanes.com",
     siteName: "hfa Portfolio",
     images: [
       {
@@ -46,9 +55,15 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    domain: "https://www.hfanes.com",
+    creator: "@hfa_dev",
+    imagesource: "/images/hfa_open.png",
     title: "hfa | Full-Stack Developer Portfolio",
     description: "Explore my full-stack projects, skills, and experience.",
-    images: ["/images/hfa_open.png"],
+    images: {
+      url: "https://www.hfanes.com/images/hfa_open.png",
+      alt: "hfa Portfolio Preview",
+    },
   },
 };
 
