@@ -31,7 +31,7 @@ export default function LeftNavbar() {
         </a>
         <a
           className="cursor-pointer transition-all duration-300 hover:scale-110"
-          href=""
+          href="https://x.com/hfa_dev"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Visit my twitter profile"
