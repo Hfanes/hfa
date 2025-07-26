@@ -51,7 +51,7 @@ export default function ProjectsPage() {
             href="https://github.com/Hfanes"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-1 hover:text-white transition-colors cursor-pointer default-cursor hover:font-bold"
+            className="group flex items-center gap-1 hover:text-black dark:hover:text-white transition-colors cursor-pointer default-cursor hover:font-bold"
           >
             <span className="group-hover:scale-102">View on my github</span>
             <span className="transform transition-transform duration-200 group-hover:translate-x-0.5">
