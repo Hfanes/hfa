@@ -21,7 +21,7 @@ export default function Projects() {
           </h3>
           <Link
             href="/projects"
-            className="group flex items-center gap-1 hover:text-white transition-colors cursor-pointer default-cursor hover:underline underline-offset-4 hover:font-bold"
+            className="group flex items-center gap-1 hover:text-black dark:hover:text-white transition-colors cursor-pointer default-cursor hover:underline underline-offset-4 hover:font-bold"
           >
             <span className="group-hover:scale-102">More</span>
             <span className="transform transition-transform duration-200 group-hover:translate-x-0.5">

@@ -242,7 +242,7 @@ export default function Navbar() {
       {scrollToTop && (
         <button
           aria-label="Scroll to top"
-          className="fixed bottom-6 right-6 p-3 rounded-full z-50 bg-accentYellow text-black transition-opacity duration-300 opacity-100"
+          className="fixed bottom-6 right-6 p-3 rounded-full z-50 bg-accentYellow text-black transition-opacity duration-300 opacity-100 default-cursor cursor-pointer"
           onClick={scrollToTopFunction}
         >
           <MdKeyboardArrowUp />

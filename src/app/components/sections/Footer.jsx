@@ -29,7 +29,7 @@ export default function Footer() {
         </a>
         <a
           className="cursor-pointer"
-          href=""
+          href="https://x.com/hfa_dev"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Visit my twitter profile"
