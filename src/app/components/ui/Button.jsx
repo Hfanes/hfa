@@ -17,7 +17,7 @@ export default function Button({
 
   const BgColor = bgColor || "bg-gray-300";
   const TextColor = textColor || "text-black";
-  const FillColor = fillColor || "bg-black";
+  const FillColor = fillColor || "bg-gray-400";
 
   // Calculate the origin of the mouse event relative to the button
   const getRelativePosition = useCallback((event) => {
