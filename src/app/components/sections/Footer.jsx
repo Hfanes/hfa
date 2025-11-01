@@ -42,7 +42,7 @@ export default function Footer() {
         </a>
         <a
           className="cursor-pointer flex items-center gap-2"
-          href="mailto:anesfh@gmail.com"
+          href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#110;&#101;&#115;&#102;&#104;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;&#10;"
           rel="noopener noreferrer"
           aria-label="Send me an email"
         >
