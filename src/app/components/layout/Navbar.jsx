@@ -300,12 +300,14 @@ export default function Navbar() {
                         href={item.href}
                         scroll={false}
                         onClick={(e) => {
-                          if (item.href.startsWith("/#")) {
+                          if (item.href === "/") {
                             e.preventDefault();
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                            toggleMobileMenu();
+                          } else if (item.href.startsWith("/#")) {
+                            e.preventDefault();
+                            console.log("here");
                             const elementId = item.href.substring(2);
-                            if (router.pathname !== "/") {
-                              return;
-                            }
                             const element = document.getElementById(elementId);
                             if (element) {
                               element.scrollIntoView({
@@ -386,7 +388,11 @@ export default function Navbar() {
                     ref={(el) => (elementRefs.current[index] = el)}
                     href={item.href}
                     onClick={(e) => {
-                      if (item.href.startsWith("/#")) {
+                      if (item.href === "/") {
+                        e.preventDefault();
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                        toggleMobileMenu();
+                      } else if (item.href.startsWith("/#")) {
                         e.preventDefault();
                         const elementId = item.href.substring(2);
                         const element = document.getElementById(elementId);
