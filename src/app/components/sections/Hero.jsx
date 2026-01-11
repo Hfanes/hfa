@@ -1,7 +1,7 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import Button from "@/components/ui/Button";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 export default function Hero() {
   const helloItems = ["Hi,", "Hallo,", "Olá,", "Hola,", "Bonjour,", "Ciao,"];

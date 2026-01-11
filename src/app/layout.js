@@ -1,11 +1,11 @@
-import { Geist_Mono, JetBrains_Mono, VT323 } from "next/font/google";
-import "./globals.css";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import ThemeProvider from "./contexts/ThemeProvider";
-import Navbar from "@/components/layout/Navbar";
 import LeftNavbar from "@/components/layout/LeftNavbar";
+import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/sections/Footer";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { JetBrains_Mono, VT323 } from "next/font/google";
+import ThemeProvider from "./contexts/ThemeProvider";
+import "./globals.css";
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -44,7 +44,7 @@ export const metadata = {
     siteName: "hfa Portfolio",
     images: [
       {
-        url: "/images/hfa_open.png",
+        url: "https://www.hfanes.com/images/hfa_open.png",
         width: 1200,
         height: 630,
         alt: "hfa Portfolio Preview",
@@ -55,9 +55,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    domain: "https://www.hfanes.com",
+    site: "@hfa_dev",
     creator: "@hfa_dev",
-    imagesource: "/images/hfa_open.png",
     title: "hfa | Full-Stack Developer Portfolio",
     description: "Explore my full-stack projects, skills, and experience.",
     images: {
