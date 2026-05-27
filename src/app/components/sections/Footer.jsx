@@ -9,7 +9,7 @@ export default function Footer() {
   return (
     <section className="sm:px-10 px-5 mt-12 mb-4 text-center mx-auto flex flex-col items-center gap-4 space-y-4 text-lg">
       <hr className="h-1 w-full"></hr>
-      <div className="flex items-center gap-4 default-cursor">
+      <div className="flex flex-col items-center gap-4 default-cursor">
         <a
           className="cursor-pointer flex items-center gap-2"
           href="https://github.com/Hfanes"
