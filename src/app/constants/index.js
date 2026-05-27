@@ -1,9 +1,30 @@
-import { FaPython, FaDiscord } from "react-icons/fa";
-import { SiPostgresql, SiJsonwebtokens } from "react-icons/si";
+import { FaPython, FaDiscord, FaRust, FaReact } from "react-icons/fa";
+import { SiPostgresql, SiJsonwebtokens, SiTauri } from "react-icons/si";
 import { BiLogoSpringBoot } from "react-icons/bi";
 import { RiNextjsFill } from "react-icons/ri";
 
 export const myProjects = [
+  {
+    title: "Hops",
+    desc: "Hops is a lightweight Windows tray app that routes external links to the right browser based on your rules. It allows you to set up rules to open links in specific browsers, making it easier to manage your browsing experience.",
+    href: "https://github.com/Hfanes/hops",
+    logo: "",
+    preview: "",
+    tech: [
+      {
+        name: "Tauri",
+        icon: <SiTauri />,
+      },
+      {
+        name: "Rust",
+        icon: <FaRust />,
+      },
+      {
+        name: "React",
+        icon: <FaReact />
+      },
+    ],
+  },
   {
     title: "Blog App",
     desc: "Blog App is a personal project designed to create a blog platform where users can write, edit, and delete their posts. It features user authentication, post management, and a clean user interface.",
