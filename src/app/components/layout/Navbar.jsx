@@ -6,7 +6,7 @@ import ExpansionFill from "@/components/ui/ExpansionFill";
 import { MdKeyboardArrowUp } from "react-icons/md";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useTheme } from "@/contexts/ThemeProvider";
 
 const navItems = [
@@ -17,7 +17,7 @@ const navItems = [
 ];
 
 export default function Navbar() {
-  const router = useRouter();
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -216,6 +216,30 @@ export default function Navbar() {
     }
   };
 
+  const handleNavClick = (item, event) => {
+    if (pathname !== "/") {
+      if (mobileMenuOpen) toggleMobileMenu();
+      return;
+    }
+
+    if (item.href === "/") {
+      event.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      if (mobileMenuOpen) toggleMobileMenu();
+    } else if (item.href.startsWith("/#")) {
+      event.preventDefault();
+      const elementId = item.href.substring(2);
+      const element = document.getElementById(elementId);
+      if (element) {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+      if (mobileMenuOpen) toggleMobileMenu();
+    }
+  };
+
   const handleNavbarMouseEnter = useCallback(() => {
     if (!isMobile) {
       if (!isScrolled && navbarCollapsedAtTop) {
@@ -299,24 +323,7 @@ export default function Navbar() {
                       <Link
                         href={item.href}
                         scroll={false}
-                        onClick={(e) => {
-                          if (item.href === "/") {
-                            e.preventDefault();
-                            window.scrollTo({ top: 0, behavior: "smooth" });
-                            toggleMobileMenu();
-                          } else if (item.href.startsWith("/#")) {
-                            e.preventDefault();
-                            console.log("here");
-                            const elementId = item.href.substring(2);
-                            const element = document.getElementById(elementId);
-                            if (element) {
-                              element.scrollIntoView({
-                                behavior: "smooth",
-                                block: "start",
-                              });
-                            }
-                          }
-                        }}
+                        onClick={(e) => handleNavClick(item, e)}
                         className={`
                           relative flex items-center justify-center overflow-hidden
                           transition-all duration-500 ease-out cursor-none
@@ -387,23 +394,7 @@ export default function Navbar() {
                     scroll={false}
                     ref={(el) => (elementRefs.current[index] = el)}
                     href={item.href}
-                    onClick={(e) => {
-                      if (item.href === "/") {
-                        e.preventDefault();
-                        window.scrollTo({ top: 0, behavior: "smooth" });
-                        toggleMobileMenu();
-                      } else if (item.href.startsWith("/#")) {
-                        e.preventDefault();
-                        const elementId = item.href.substring(2);
-                        const element = document.getElementById(elementId);
-                        if (element) {
-                          element.scrollIntoView({
-                            behavior: "smooth",
-                            block: "start",
-                          });
-                        }
-                      }
-                    }}
+                    onClick={(e) => handleNavClick(item, e)}
                     className={`
                         relative flex items-center justify-center overflow-hidden
                         transition-all duration-500 ease-out cursor-none 
