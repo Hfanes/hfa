@@ -42,7 +42,7 @@ export default function About() {
           about me
         </h2>
         <div className="flex flex-col md:flex-row items-center md:items-start gap-8 mt-4 w-full">
-          <div className="flex-1 space-y-4 text-lg">
+          <div className="flex-1 space-y-4 text-sm sm:text-lg">
             <p>
               I'm a full-stack developer from Portugal, currently based in
               Switzerland and actively seeking full-time opportunities. I enjoy

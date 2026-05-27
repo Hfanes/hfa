@@ -6,7 +6,7 @@ export default function Contact() {
       <div className="w-full flex justify-center">
         <div className="flex w-full sm:w-1/2">
           <div className="flex flex-col items-center gap-4 space-y-4 text-lg">
-            <h3 className="text-xl sm:text-2xl font-bold">Keep In Touch.</h3>
+            <h3 className="text-lg sm:text-xl font-bold">Keep In Touch.</h3>
             <div className="font-lg">
               If you want to know more about me, have a question, or just want
               to say hello, don't hesitate to contact me. I'll get back to you
