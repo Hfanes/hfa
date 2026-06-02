@@ -1,5 +1,5 @@
 "use client";
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { HiOutlineArrowTrendingUp } from "react-icons/hi2";
 import { BiGitRepoForked } from "react-icons/bi";
@@ -31,7 +31,7 @@ export default function ProjectsPage() {
         </h3>
         <div className="relative mb-2 flex items-center w-full">
           <HiOutlineSearch
-            className="absolute left-3 pointer-events-non"
+            className="absolute left-3 pointer-events-none"
             size={18}
           />
           <input

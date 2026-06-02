@@ -50,7 +50,7 @@ export default function Projects() {
               <div className="flex">
                 {/* Title */}
                 <a
-                  className="group inline-flex items-center gap-1 text-sm md:text-lg sfm:text-2xl font-extrabold text-accentYellow hover:text-zinc-200 transition-colors cursor-pointer default-cursor"
+                  className="group inline-flex items-center gap-1 text-sm md:text-lg sm:text-2xl font-extrabold text-accentYellow hover:text-zinc-200 transition-colors cursor-pointer default-cursor"
                   href={project.href}
                   target="_blank"
                   rel="noopener noreferrer"
