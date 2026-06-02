@@ -73,7 +73,7 @@ export default function Button({
     >
       <button
         ref={buttonRef}
-        className={`cursor-pointer border-3 border-black bg-gray-300 pb-2 transition-all duration-100 ease-in-out active:pb-0 active:mb-2 active:translate-y-2 text-black font-bold text-sm sm:text-lg active:bg-gray-700 ${className}`}
+        className={`cursor-pointer border-3 border-black bg-gray-300 pb-2 transition-[padding,margin,transform,background-color] duration-100 ease-in-out active:pb-0 active:mb-2 active:translate-y-2 text-black font-bold text-sm sm:text-lg active:bg-gray-700 ${className}`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         {...props}

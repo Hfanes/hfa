@@ -12,7 +12,7 @@ export default function ThemeToggle() {
     <button
       aria-label="Toggle Theme"
       onClick={toggleTheme}
-      className="cursor-pointer transition-all duration-300 hover:scale-110"
+      className="cursor-pointer transition-transform duration-300 hover:scale-110"
     >
       {isDark ? (
         // Sun icon for dark mode

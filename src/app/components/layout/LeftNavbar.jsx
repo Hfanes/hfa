@@ -8,11 +8,11 @@ import ThemeToggle from "../ui/ThemeToggle";
 
 export default function LeftNavbar() {
   return (
-    <nav className="fixed top-8 left-8 p-3 z-100">
+    <nav className="fixed top-8 left-8 p-3 z-[100]">
       <div className="flex sm:flex-col items-center justify-center gap-4 default-cursor">
         <ThemeToggle />
         <a
-          className="cursor-pointer transition-all duration-300 hover:scale-110"
+          className="cursor-pointer transition-transform duration-300 hover:scale-110"
           href="https://github.com/Hfanes"
           target="_blank"
           rel="noopener noreferrer"
@@ -21,7 +21,7 @@ export default function LeftNavbar() {
           <FaGithub size={24} />
         </a>
         <a
-          className="cursor-pointer transition-all duration-300 hover:scale-110"
+          className="cursor-pointer transition-transform duration-300 hover:scale-110"
           href="https://www.linkedin.com/in/hugofanes/"
           target="_blank"
           rel="noopener noreferrer"
@@ -30,7 +30,7 @@ export default function LeftNavbar() {
           <FaLinkedin size={24} />
         </a>
         <a
-          className="cursor-pointer transition-all duration-300 hover:scale-110"
+          className="cursor-pointer transition-transform duration-300 hover:scale-110"
           href="https://x.com/hfa_dev"
           target="_blank"
           rel="noopener noreferrer"
@@ -39,7 +39,7 @@ export default function LeftNavbar() {
           <FaXTwitter size={24} />
         </a>
         <a
-          className="cursor-pointer transition-all duration-300 hover:scale-110"
+          className="cursor-pointer transition-transform duration-300 hover:scale-110"
           href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#110;&#101;&#115;&#102;&#104;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;&#10;"
           rel="noopener noreferrer"
           aria-label="Send me an email"
