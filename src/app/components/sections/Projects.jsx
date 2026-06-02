@@ -30,7 +30,9 @@ export default function Projects() {
           </Link>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {myProjects.map((project, index) => (
+          {myProjects
+          .filter((project)=>project.display)
+          .map((project, index) => (
             <div
               key={index}
               className="relative flex flex-col justify-between border gap-4 p-5 min-h-[200px] bg-deepBlue text-accentYellow "

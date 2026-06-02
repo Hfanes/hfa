@@ -10,6 +10,7 @@ export const myProjects = [
     href: "https://hops.hfanes.com",
     logo: "",
     preview: "",
+    display: true,
     tech: [
       {
         name: "Tauri",
@@ -31,6 +32,7 @@ export const myProjects = [
     href: "https://github.com/Hfanes/java-blog",
     logo: "",
     preview: "",
+    display: true,
     tech: [
       {
         name: "Spring Boot",
@@ -56,6 +58,8 @@ export const myProjects = [
     href: "https://github.com/Hfanes/java-tasks",
     logo: "",
     preview: "",
+    display: true,
+
     tech: [
       {
         name: "Spring Boot",
@@ -77,6 +81,7 @@ export const myProjects = [
     href: "https://github.com/Hfanes/discord-bot-cherry",
     logo: "",
     preview: "",
+    display: true,
     tech: [
       {
         name: "Python",
