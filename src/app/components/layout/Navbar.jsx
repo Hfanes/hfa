@@ -3,7 +3,6 @@
 import { useState, useCallback, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import ExpansionFill from "@/components/ui/ExpansionFill";
-import { MdKeyboardArrowUp } from "react-icons/md";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -15,20 +14,16 @@ const navItems = [
   { label: "Contact", href: "/#contact", color: "bg-brightPurple" },
 ];
 
-export default function Navbar() {
+export default function Navbar({ variant = "desktop" }) {
   const pathname = usePathname();
+  const isMobileVariant = variant === "mobile";
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [expansionStates, setExpansionStates] = useState({});
   const [cascadeStates, setCascadeStates] = useState({});
   const [navbarExpanded, setNavbarExpanded] = useState(false);
-  const [scrollToTop, setScrollToTop] = useState(false);
   const [navbarCollapsedAtTop, setNavbarCollapsedAtTop] = useState(false);
-
-  const scrollToTopFunction = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 1024px)");
@@ -46,8 +41,6 @@ export default function Navbar() {
       const scrollY = window.scrollY;
 
       setIsScrolled(scrollY > 100);
-      setScrollToTop(scrollY > 300);
-
       if (scrollY > 100) {
         setNavbarExpanded(false);
       }
@@ -204,25 +197,18 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Scroll to top button - always rendered but conditionally visible */}
-      {scrollToTop && (
-        <button
-          aria-label="Scroll to top"
-          className="fixed bottom-6 right-6 p-3 rounded-full z-50 bg-accentYellow text-black transition-opacity duration-300 opacity-100 default-cursor cursor-pointer"
-          onClick={scrollToTopFunction}
-        >
-          <MdKeyboardArrowUp />
-        </button>
-      )}
-
       {/* Mobile */}
-      {isMobile ? (
+      {isMobileVariant || isMobile ? (
         <div>
           {/* Mobile Menu Button */}
           <motion.button
             aria-label="Toggle mobile"
             onClick={toggleMobileMenu}
-            className="fixed top-8 right-8 z-50 p-3 bg-black transition-transform duration-300"
+            className={
+              isMobileVariant
+                ? "p-3 transition-transform duration-300"
+                : "fixed top-8 right-8 z-50 p-3 transition-transform duration-300"
+            }
           >
             <AnimatePresence mode="wait" initial={false}>
               {mobileMenuOpen ? (
@@ -253,7 +239,11 @@ export default function Navbar() {
 
           {/* Mobile Menu */}
           {mobileMenuOpen && (
-            <nav className="fixed top-24 right-8 z-40">
+            <nav
+              className={
+                isMobileVariant ? "fixed top-20 right-5 z-[90]" : "fixed top-24 right-8 z-40"
+              }
+            >
               <ul className="flex flex-col space-y-4 items-end">
                 {navItems.map((item, index) => {
                   const cascadeState = cascadeStates[index];

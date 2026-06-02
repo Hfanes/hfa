@@ -1,6 +1,8 @@
 import LeftNavbar from "@/components/layout/LeftNavbar";
+import MobileNavbar from "@/components/layout/MobileNavbar";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/sections/Footer";
+import ScrollToTopButton from "@/components/ui/ScrollToTopButton";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { JetBrains_Mono, VT323 } from "next/font/google";
@@ -71,8 +73,12 @@ export default function RootLayout({ children }) {
     <html lang="en" className="dark">
       <body className={`${jetbrainsMono.variable} ${vt323.variable} `}>
         <ThemeProvider>
-          <Navbar />
-          <LeftNavbar />
+          <MobileNavbar />
+          <div className="hidden lg:block">
+            <Navbar />
+            <LeftNavbar />
+          </div>
+          <ScrollToTopButton />
           {children}
           <Footer />
         </ThemeProvider>

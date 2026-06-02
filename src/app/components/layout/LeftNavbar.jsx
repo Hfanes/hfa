@@ -6,10 +6,16 @@ import { IoMdMail } from "react-icons/io";
 import React from "react";
 import ThemeToggle from "../ui/ThemeToggle";
 
-export default function LeftNavbar() {
+export default function LeftNavbar({ variant = "desktop" }) {
+  const isMobile = variant === "mobile";
+
   return (
-    <nav className="fixed top-8 left-8 p-3 z-[100]">
-      <div className="flex sm:flex-col items-center justify-center gap-4 default-cursor">
+    <nav className={isMobile ? "" : "fixed top-8 left-8 p-3 z-[100]"}>
+      <div
+        className={`flex items-center justify-center gap-4 default-cursor ${
+          isMobile ? "" : "sm:flex-col"
+        }`}
+      >
         <ThemeToggle />
         <a
           className="cursor-pointer transition-transform duration-300 hover:scale-110"
