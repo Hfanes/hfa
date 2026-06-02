@@ -11,7 +11,7 @@ export default function ExpansionFill({
 }) {
   return (
     <div
-      className={`absolute inset-0 transition-[clip-path,opacity,transform] duration-100 ease-out pointer-events-none ${className} ${fillColor}`}
+      className={`absolute inset-0 transition-[clip-path,opacity,transform] duration-300 ease-out pointer-events-none ${className} ${fillColor}`}
       style={{
         opacity: isActive ? 1 : 0,
         transform: `scale(${scale})`,
