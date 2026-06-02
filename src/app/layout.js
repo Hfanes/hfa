@@ -2,6 +2,7 @@ import LeftNavbar from "@/components/layout/LeftNavbar";
 import MobileNavbar from "@/components/layout/MobileNavbar";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/sections/Footer";
+import JsonLd from "@/components/seo/JsonLd";
 import ScrollToTopButton from "@/components/ui/ScrollToTopButton";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -23,18 +24,42 @@ const vt323 = VT323({
 
 export const metadata = {
   metadataBase: new URL("https://www.hfanes.com/"),
+  applicationName: "hfa Portfolio",
   title: "hfa | Full-Stack Developer Portfolio",
   category: "technology",
+  authors: [{ name: "Hugo Anes", url: "https://www.hfanes.com/" }],
   creator: "@hfa_dev",
+  publisher: "Hugo Anes",
   keywords: [
     "hfa",
     "hfanes",
+    "Hugo Anes",
     "full-stack developer",
+    "full-stack developer portfolio",
+    "JavaScript developer",
+    "React developer",
+    "Next.js developer",
+    "Java developer",
+    "Spring Boot developer",
     "portfolio",
     "web development",
+    "software engineering",
   ],
   description:
     "Full-stack web developer specializing in modern JavaScript and Java frameworks, backend APIs, and responsive design.",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   icons: {
     icon: "/images/yellow_hfa.ico",
   },
@@ -79,6 +104,7 @@ export default function RootLayout({ children }) {
             <LeftNavbar />
           </div>
           <ScrollToTopButton />
+          <JsonLd />
           {children}
           <Footer />
         </ThemeProvider>
