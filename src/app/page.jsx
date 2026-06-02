@@ -1,8 +1,6 @@
 import About from "@/components/sections/About";
-import Navbar from "@/components/layout/Navbar";
-import LeftNavbar from "@/components/layout/LeftNavbar";
 import Projects from "@/components/sections/Projects";
-import CustomCursor from "@/components/ui/CustomCursor ";
+import CustomCursor from "@/components/ui/CustomCursor";
 import Hero from "@/components/sections/Hero";
 import Contact from "@/components/sections/Contact";
 
@@ -14,8 +12,6 @@ export default function Home() {
     >
       <CustomCursor />
       <main className="flex flex-col gap-8 items-center sm:items-start">
-        <Navbar />
-        <LeftNavbar />
         <Hero />
         <About />
         <Projects />

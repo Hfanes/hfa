@@ -11,15 +11,14 @@ export default function ExpansionFill({
 }) {
   return (
     <div
-      className={`absolute inset-0 transition-all duration-100 ease-out pointer-events-none ${className} ${fillColor}`}
+      className={`absolute inset-0 transition-[clip-path,opacity,transform] duration-100 ease-out pointer-events-none ${className} ${fillColor}`}
       style={{
         opacity: isActive ? 1 : 0,
         transform: `scale(${scale})`,
         transformOrigin: `${originX * 100}% ${originY * 100}%`,
-        clipPath: `circle(${Math.max(
-          scale * 120,
-          scale * Math.sqrt(2) * 100
-        )}% at ${originX * 100}% ${originY * 100}%)`,
+        clipPath: `circle(${scale * Math.SQRT2 * 100}% at ${
+          originX * 100
+        }% ${originY * 100}%)`,
         ...style,
       }}
     />

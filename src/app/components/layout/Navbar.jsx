@@ -1,13 +1,12 @@
 "use client";
 
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import ExpansionFill from "@/components/ui/ExpansionFill";
 import { MdKeyboardArrowUp } from "react-icons/md";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useTheme } from "@/contexts/ThemeProvider";
 
 const navItems = [
   { label: "Home", href: "/", color: "bg-deepBlue" },
@@ -21,56 +20,47 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isOverNavbar, setIsOverNavbar] = useState(false);
   const [expansionStates, setExpansionStates] = useState({});
   const [cascadeStates, setCascadeStates] = useState({});
   const [navbarExpanded, setNavbarExpanded] = useState(false);
   const [scrollToTop, setScrollToTop] = useState(false);
   const [navbarCollapsedAtTop, setNavbarCollapsedAtTop] = useState(false);
-  const elementRefs = useRef([]);
-  const navbarRef = useRef(null);
-  const { isDark } = useTheme();
 
   const scrollToTopFunction = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // Check if tablet
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 1024);
-    };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
+    const mediaQuery = window.matchMedia("(max-width: 1024px)");
+
+    const updateMobile = () => setIsMobile(mediaQuery.matches);
+
+    updateMobile();
+    mediaQuery.addEventListener("change", updateMobile);
+
+    return () => mediaQuery.removeEventListener("change", updateMobile);
   }, []);
 
-  // Track scroll position
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 100);
-      // If we scroll and navbar was expanded, collapse it
-      if (window.scrollY > 100 && navbarExpanded) {
+      const scrollY = window.scrollY;
+
+      setIsScrolled(scrollY > 100);
+      setScrollToTop(scrollY > 300);
+
+      if (scrollY > 100) {
         setNavbarExpanded(false);
       }
-      // If we return to the top, expand the navbar
-      if (window.scrollY === 0) {
+
+      if (scrollY === 0) {
         setNavbarCollapsedAtTop(false);
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [navbarExpanded]);
-
-  //scroll to top
-  useEffect(() => {
-    const toggleVisibility = () => {
-      setScrollToTop(window.scrollY > 300);
-    };
-
-    window.addEventListener("scroll", toggleVisibility);
-    return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
   // Mouse position relative to a nav item (for animation origin).
@@ -95,8 +85,6 @@ export default function Navbar() {
         event.clientY
       );
 
-      setIsOverNavbar(true);
-
       // If navbar is collapsed and not yet expanded, expand it first
       if (isScrolled && !navbarExpanded) {
         setNavbarExpanded(true);
@@ -108,31 +96,10 @@ export default function Navbar() {
           isActive: true,
           originX: relativeX,
           originY: relativeY,
-          scale: 0,
-          isExpanding: true,
+          scale: 1,
+          isExpanding: false,
         },
       }));
-
-      // Animate expansion
-      let progress = 0;
-      const animate = () => {
-        //"anim speed"
-        progress += 0.08;
-        if (progress >= 1) {
-          progress = 1;
-          setExpansionStates((prev) => ({
-            ...prev,
-            [index]: { ...prev[index], isExpanding: false, scale: 1 },
-          }));
-        } else {
-          setExpansionStates((prev) => ({
-            ...prev,
-            [index]: { ...prev[index], scale: progress },
-          }));
-          requestAnimationFrame(animate);
-        }
-      };
-      requestAnimationFrame(animate);
     },
     [getRelativePosition, isMobile, isScrolled, navbarExpanded]
   );
@@ -154,36 +121,13 @@ export default function Navbar() {
           ...prev[index],
           exitX: relativeX,
           exitY: relativeY,
+          isActive: false,
           isContracting: true,
+          scale: 0,
         },
       }));
-
-      // Animate contraction
-      let progress = expansionStates[index]?.scale || 1;
-      const animate = () => {
-        progress -= 0.12;
-        if (progress <= 0) {
-          progress = 0;
-          setExpansionStates((prev) => ({
-            ...prev,
-            [index]: {
-              ...prev[index],
-              isActive: false,
-              isContracting: false,
-              scale: 0,
-            },
-          }));
-        } else {
-          setExpansionStates((prev) => ({
-            ...prev,
-            [index]: { ...prev[index], scale: progress },
-          }));
-          requestAnimationFrame(animate);
-        }
-      };
-      requestAnimationFrame(animate);
     },
-    [getRelativePosition, expansionStates, isMobile]
+    [getRelativePosition, isMobile]
   );
 
   const toggleMobileMenu = () => {
@@ -245,13 +189,11 @@ export default function Navbar() {
       if (!isScrolled && navbarCollapsedAtTop) {
         setNavbarCollapsedAtTop(false);
       }
-      setIsOverNavbar(true);
     }
   }, [isMobile, isScrolled, navbarCollapsedAtTop]);
 
   const handleNavbarMouseLeave = useCallback(() => {
     if (!isMobile) {
-      setIsOverNavbar(false);
       if (!isScrolled) {
         setNavbarCollapsedAtTop(true);
       } else {
@@ -280,9 +222,9 @@ export default function Navbar() {
           <motion.button
             aria-label="Toggle mobile"
             onClick={toggleMobileMenu}
-            className="fixed top-8 right-8 z-50 p-3 bg-black transition-all duration-300"
+            className="fixed top-8 right-8 z-50 p-3 bg-black transition-transform duration-300"
           >
-            <AnimatePresence exitBeforeEnter mode="wait" initial={false}>
+            <AnimatePresence mode="wait" initial={false}>
               {mobileMenuOpen ? (
                 <motion.div
                   key="close"
@@ -326,7 +268,7 @@ export default function Navbar() {
                         onClick={(e) => handleNavClick(item, e)}
                         className={`
                           relative flex items-center justify-center overflow-hidden
-                          transition-all duration-500 ease-out cursor-none
+                          transition-[width,height,padding,transform] duration-500 ease-out cursor-none
                           text-white
                           ${isExpanding ? "h-12 px-6" : "h-12"}
                           ${isCollapsing ? "h-12" : ""}
@@ -343,7 +285,7 @@ export default function Navbar() {
                         <span
                           className={`
                             font-bold text-sm whitespace-nowrap
-                            transition-all duration-300
+                            transition-[opacity,transform] duration-300
                             ${
                               isExpanding
                                 ? "opacity-100 translate-x-0"
@@ -364,8 +306,7 @@ export default function Navbar() {
       ) : (
         //DESKTOP
         <nav
-          ref={navbarRef}
-          className="fixed top-8 right-8 z-50 transition-all duration-500 ease-out"
+          className="fixed top-8 right-8 z-50 transition-transform duration-500 ease-out"
           onMouseEnter={handleNavbarMouseEnter}
           onMouseLeave={handleNavbarMouseLeave}
         >
@@ -392,12 +333,11 @@ export default function Navbar() {
                 <li key={item.label} className="relative self-end">
                   <Link
                     scroll={false}
-                    ref={(el) => (elementRefs.current[index] = el)}
                     href={item.href}
                     onClick={(e) => handleNavClick(item, e)}
                     className={`
                         relative flex items-center justify-center overflow-hidden
-                        transition-all duration-500 ease-out cursor-none 
+                        transition-[width,height,padding,transform] duration-500 ease-out cursor-none 
                         ${shouldBeExpanded ? "h-12 px-6" : "h-12"}
                         ${item.color}
                         transform hover:scale-110 
@@ -426,7 +366,7 @@ export default function Navbar() {
                         <span
                           className={`
                             text-white font-bold text-lg whitespace-nowrap relative z-10
-                            transition-all duration-500 opacity-100 translate-x-0
+                            transition-[opacity,transform] duration-500 opacity-100 translate-x-0
                           `}
                         >
                           {item.label}
