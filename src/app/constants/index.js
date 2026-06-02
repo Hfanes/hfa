@@ -7,7 +7,7 @@ export const myProjects = [
   {
     title: "Hops",
     desc: "Hops is a lightweight Windows tray app that routes external links to the right browser based on your rules. It allows you to set up rules to open links in specific browsers, making it easier to manage your browsing experience.",
-    href: "https://github.com/Hfanes/hops",
+    href: "https://hops.hfanes.com",
     logo: "",
     preview: "",
     tech: [
