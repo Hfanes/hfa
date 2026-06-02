@@ -7,6 +7,7 @@ import { DiMsqlServer } from "react-icons/di";
 import { SiPostgresql, SiDotnet } from "react-icons/si";
 import { BiLogoSpringBoot } from "react-icons/bi";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const techItems = [
   { label: "Javascript", icon: <IoLogoJavascript /> },
@@ -57,9 +58,11 @@ export default function About() {
             </p>
           </div>
           <div className="hidden md:flex flex-shrink-0 mb-6 md:mb-0 md:mr-8 justify-center w-full md:w-auto">
-            <img
+            <Image
               src="/images/me.webp"
-              alt="Portrait"
+              alt="Portrait of Hugo Anes"
+              width={160}
+              height={160}
               className="w-32 h-32 md:w-40 md:h-40 object-cover rounded-lg"
             />
           </div>

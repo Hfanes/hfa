@@ -1,6 +1,7 @@
 "use client";
 import Button from "@/components/ui/Button";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function Hero() {
@@ -20,9 +21,12 @@ export default function Hero() {
       className="c-space min-h-screen w-full flex flex-col items-center justify-center"
     >
       <div className="flex flex-col items-center gap-y-10 w-full">
-        <img
+        <Image
           src="/images/yellow_hfa.webp"
           alt="hfa logo"
+          width={168}
+          height={168}
+          priority
           className="w-42 h-42 aspect-auto"
         />
         <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-bold">
