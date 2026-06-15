@@ -45,10 +45,10 @@ export default function About() {
         <div className="flex flex-col md:flex-row items-center md:items-start gap-8 mt-4 w-full">
           <div className="flex-1 space-y-4 text-sm sm:text-lg">
             <p>
-              I'm a full-stack developer from Portugal, currently based in
-              Switzerland and actively seeking full-time opportunities. I enjoy
-              working across the stack and love building functional,
-              user-friendly applications that solve real problems.
+              I'm a full-stack developer from Portugal, actively seeking
+              full-time opportunities. I enjoy working across the stack and love
+              building functional, user-friendly applications that solve real
+              problems.
             </p>
             <p>
               I hold a Master's degree in Computer Science from the University

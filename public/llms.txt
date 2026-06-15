@@ -4,7 +4,7 @@ Website: https://www.hfanes.com/
 Owner: Hugo Anes
 Role: Full-Stack Developer
 
-This is a personal portfolio website for Hugo Anes, a full-stack developer from Portugal based in Switzerland.
+This is a personal portfolio website for Hugo Anes, a full-stack developer from Portugal.
 
 Key pages:
 - Home: https://www.hfanes.com/
