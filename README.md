@@ -1,7 +1,7 @@
 # hfa
 
 <a href="https://www.hfanes.com/" target="_blank">
-<img src="public/images/fullpage.webp" alt="Website Screenshot" />
+<img src="public/images/preview.webp" alt="Website Screenshot" />
 </a>
 
 </br>
