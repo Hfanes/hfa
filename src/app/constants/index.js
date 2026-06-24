@@ -1,15 +1,35 @@
 import { FaPython, FaDiscord, FaRust, FaReact } from "react-icons/fa";
 import { SiPostgresql, SiJsonwebtokens, SiTauri } from "react-icons/si";
 import { BiLogoSpringBoot } from "react-icons/bi";
-import { RiNextjsFill } from "react-icons/ri";
+import { RiNextjsFill, RiSupabaseFill } from "react-icons/ri";
 
 export const myProjects = [
   {
+    title: "Treinante",
+    desc: "Treinante is a running analytics platform for importing runs, analysing training, tracking progress, and using practical training tools. It is designed for road, trail, track, and mixed runners, with features that adapt to the data each runner provides.",
+    website: "https://treinante.hfanes.com",
+    github: "https://github.com/Hfanes/treinante",
+    logo: "/images/treinante.png",
+    preview: "/images/treinante-preview.png",
+    display: true,
+    tech: [
+      {
+        name: "Next.js",
+        icon: <RiNextjsFill />,
+      },
+      {
+        name: "Supabase",
+        icon: <RiSupabaseFill />,
+      },
+    ],
+  },
+  {
     title: "Hops",
     desc: "Hops is a lightweight Windows tray app that routes external links to the right browser based on your rules. It allows you to set up rules to open links in specific browsers, making it easier to manage your browsing experience.",
-    href: "https://hops.hfanes.com",
-    logo: "",
-    preview: "",
+    website: "https://hops.hfanes.com",
+    github: "https://github.com/Hfanes/hops",
+    logo: "/images/hops.webp",
+    preview: "/images/settings.webp",
     display: true,
     tech: [
       {
@@ -22,14 +42,15 @@ export const myProjects = [
       },
       {
         name: "React",
-        icon: <FaReact />
+        icon: <FaReact />,
       },
     ],
   },
   {
     title: "Blog App",
     desc: "Blog App is a personal project designed to create a blog platform where users can write, edit, and delete their posts. It features user authentication, post management, and a clean user interface.",
-    href: "https://github.com/Hfanes/java-blog",
+    website: "",
+    github: "https://github.com/Hfanes/java-blog",
     logo: "",
     preview: "",
     display: true,
@@ -55,7 +76,8 @@ export const myProjects = [
   {
     title: "Tasks App",
     desc: "Tasks App is a full-stack personal project designed to create taks lists and tasks.",
-    href: "https://github.com/Hfanes/java-tasks",
+    website: "",
+    github: "https://github.com/Hfanes/java-tasks",
     logo: "",
     preview: "",
     display: true,
@@ -78,7 +100,8 @@ export const myProjects = [
   {
     title: "Discord Bot Cherry",
     desc: "Discord Bot Cherry is a personal project designed to fetch cryptocurrency prices from an API.",
-    href: "https://github.com/Hfanes/discord-bot-cherry",
+    website: "",
+    github: "https://github.com/Hfanes/discord-bot-cherry",
     logo: "",
     preview: "",
     display: true,

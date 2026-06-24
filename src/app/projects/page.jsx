@@ -4,6 +4,7 @@ import { FaGithub } from "react-icons/fa";
 import { HiOutlineArrowTrendingUp } from "react-icons/hi2";
 import { BiGitRepoForked } from "react-icons/bi";
 import { HiOutlineArrowNarrowRight, HiOutlineSearch } from "react-icons/hi";
+import Image from "next/image";
 import Link from "next/link";
 import { myProjects } from "@/constants/index";
 
@@ -62,34 +63,57 @@ export default function ProjectsPage() {
         {filteredProjects.map((project, index) => (
           <div
             key={index}
-            className="relative flex flex-col justify-between border gap-4 p-5 bg-deepBlue text-accentYellow "
+            className="relative flex flex-col justify-between border gap-4 p-5 bg-deepBlue text-accentYellow"
           >
-            {/* GitHub icon on top-right */}
-            <a
-              className="absolute top-4 right-4 default-cursor"
-              href={project.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit this project in github"
-            >
-              <FaGithub size={24} />
-            </a>
-            <div className="flex">
-              {/* Title */}
-              <a
-                className="group inline-flex items-center gap-1 text-sm md:text-lg sm:text-2xl font-extrabold text-accentYellow hover:text-zinc-200 transition-colors cursor-pointer default-cursor"
-                href={project.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Visit this project in github"
-              >
-                <span className="group-hover:scale-102 transition-transform">
-                  {project.title}
-                </span>
-                <span className="transform transition-transform duration-200 group-hover:translate-x-0.5">
-                  <HiOutlineArrowTrendingUp />
-                </span>
-              </a>
+            {project.preview && (
+              <div className="relative mb-1 h-48 overflow-hidden border border-accentYellow/30 bg-black/20">
+                <Image
+                  src={project.preview}
+                  alt={`${project.title} preview`}
+                  fill
+                  sizes="(min-width: 896px) 896px, 100vw"
+                  className="object-cover object-top"
+                />
+              </div>
+            )}
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-3">
+                {project.logo && (
+                  <Image
+                    src={project.logo}
+                    alt={`${project.title} logo`}
+                    width={40}
+                    height={40}
+                    className="h-10 w-10 shrink-0 rounded object-contain"
+                  />
+                )}
+                {/* Title */}
+                <a
+                  className="group inline-flex items-center gap-1 text-sm md:text-lg sm:text-2xl font-extrabold text-accentYellow hover:text-zinc-200 transition-colors cursor-pointer default-cursor"
+                  href={project.website || project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Visit ${project.title}`}
+                >
+                  <span className="group-hover:scale-102 transition-transform">
+                    {project.title}
+                  </span>
+                  <span className="transform transition-transform duration-200 group-hover:translate-x-0.5">
+                    <HiOutlineArrowTrendingUp />
+                  </span>
+                </a>
+              </div>
+              {project.github && (
+                <a
+                  className="shrink-0 default-cursor"
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Visit ${project.title} on GitHub`}
+                >
+                  <FaGithub size={24} />
+                </a>
+              )}
             </div>
 
             {/* Description (centered if short) */}
