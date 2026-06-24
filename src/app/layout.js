@@ -3,6 +3,7 @@ import MobileNavbar from "@/components/layout/MobileNavbar";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/sections/Footer";
 import JsonLd from "@/components/seo/JsonLd";
+import CustomCursor from "@/components/ui/CustomCursor";
 import ScrollToTopButton from "@/components/ui/ScrollToTopButton";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -98,6 +99,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className="dark">
       <body className={`${jetbrainsMono.variable} ${vt323.variable} `}>
         <ThemeProvider>
+          <CustomCursor />
           <MobileNavbar />
           <div className="hidden lg:block">
             <Navbar />
